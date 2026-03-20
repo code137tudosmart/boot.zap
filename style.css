@@ -1,244 +1,53 @@
-/* Variáveis de Cores */
-:root {
-    --color-black: #1a1a1a; /* Um preto bem escuro */
-    --color-purple: #A020F0; /* Roxo vibrante */
-    --color-green: #00FF7F; /* Verde neon/primavera */
-    --color-white: #ffffff;
-    --color-gray-dark: #333333;
-    --color-text-light: #e0e0e0;
-}
-
-/* Reset Básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--color-text-light);
-    line-height: 1.6;
-    overflow-x: hidden; /* Evita scroll horizontal devido à animação */
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Animação de Fundo RGB */
-.background-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Garante que fique atrás do conteúdo */
-    background: linear-gradient(45deg, var(--color-purple), var(--color-green), var(--color-black), var(--color-purple));
-    background-size: 400% 400%; /* Permite que o gradiente se mova */
-    animation: rgb-gradient 15s ease infinite; /* Animação suave e infinita */
-}
-
-@keyframes rgb-gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Container Principal */
-.container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.85); /* Fundo semi-transparente para o conteúdo */
-    border-radius: 15px;
-    box-shadow: 0 0 30px rgba(var(--color-purple), 0.5), 0 0 30px rgba(var(--color-green), 0.5);
-    position: relative;
-    z-index: 1; /* Garante que o conteúdo fique acima do fundo */
-    border: 1px solid var(--color-gray-dark);
-}
-
-/* Cabeçalho */
-header {
-    text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--color-gray-dark);
-    margin-bottom: 30px;
-}
-
-header h1 {
-    font-size: 3em;
-    color: var(--color-green);
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px var(--color-green);
-}
-
-header p {
-    font-size: 1.2em;
-    color: var(--color-purple);
-}
-
-/* Abas de Navegação */
-.tabs {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Permite que as abas quebrem a linha em telas menores */
-    gap: 10px;
-    margin-bottom: 30px;
-}
-
-.tab-button {
-    background-color: var(--color-gray-dark);
-    color: var(--color-text-light);
-    padding: 12px 25px;
+/*
+ * Improved styles for button elements
+ * Added hover effects and active states
+ */
+.button {
+    background-color: #4CAF50; /* Green */
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    outline: none;
-}
-
-.tab-button:hover {
-    background-color: var(--color-purple);
-    transform: translateY(-2px);
-}
-
-.tab-button.active {
-    background-color: var(--color-green);
-    color: var(--color-black);
-    font-weight: bold;
-    box-shadow: 0 0 15px rgba(var(--color-green), 0.7);
-}
-
-/* Conteúdo das Abas */
-.tab-content {
-    display: none; /* Esconde todas as abas por padrão */
-    padding: 20px;
-    background: rgba(var(--color-black), 0.7);
-    border-radius: 10px;
-    border: 1px solid var(--color-gray-dark);
-}
-
-.tab-content.active {
-    display: block; /* Mostra a aba ativa */
-}
-
-.tab-content h2 {
-    color: var(--color-purple);
-    margin-bottom: 15px;
-    font-size: 2em;
+    color: white;
+    padding: 15px 32px;
     text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s;
 }
 
-.tab-content p {
+.button:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+.button:active {
+    background-color: #3e8e41; /* Even darker green */
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+/*
+ * Flexbox layout styles
+ * Improved organization and alignment
+ */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+/*
+ * Typography styles
+ * Added improvements for headings and text elements
+ */
+h1 {
+    font-size: 2em;
+    color: #333;
     margin-bottom: 10px;
 }
-
-.tab-content ul {
-    list-style: none;
-    padding-left: 20px;
-    margin-top: 15px;
-}
-
-.tab-content ul li {
-    margin-bottom: 8px;
-    position: relative;
-    padding-left: 25px;
-}
-
-.tab-content ul li::before {
-    content: '•'; /* Marcador de lista personalizado */
-    color: var(--color-green);
-    font-size: 1.2em;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-/* Botão do WhatsApp */
-.whatsapp-button {
-    display: block; /* Ocupa a largura total */
-    width: fit-content; /* Ajusta a largura ao conteúdo */
-    margin: 25px auto 10px auto; /* Centraliza */
-    background-color: #25D366; /* Cor oficial do WhatsApp */
-    color: var(--color-white);
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 50px;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-}
-
-.whatsapp-button:hover {
-    background-color: #1DA851;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
-}
-
-.whatsapp-note {
-    font-size: 0.85em;
-    color: var(--color-text-light);
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* Rodapé */
-footer {
-    text-align: center;
-    padding-top: 20px;
-    margin-top: 30px;
-    border-top: 1px solid var(--color-gray-dark);
-    font-size: 0.9em;
-    color: var(--color-text-light);
-}
-
-/* Responsividade Básica */
-@media (max-width: 768px) {
-    .container {
-        margin: 20px;
-        padding: 20px;
-    }
-
-    header h1 {
-        font-size: 2.5em;
-    }
-
-    .tab-button {
-        padding: 10px 18px;
-        font-size: 1em;
-    }
-
-    .whatsapp-button {
-        padding: 12px 25px;
-        font-size: 1.1em;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 2em;
-    }
-
-    header p {
-        font-size: 1em;
-    }
-
-    .tabs {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .tab-button {
-        width: 100%;
-    }
+h2 {
+    font-size: 1.5em;
+    color: #666;
 }
